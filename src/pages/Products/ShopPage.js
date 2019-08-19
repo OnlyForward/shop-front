@@ -10,7 +10,8 @@ class ShopPage extends Component {
         this.state = {
             lists: [
                 {}
-            ]
+            ],
+            currentSort:''
         }
     }
 
@@ -27,10 +28,29 @@ class ShopPage extends Component {
         })
     }
 
+    sortProducts(event) {
+        const name = event.target.innerText;
+        event.target.classList.add('active');
+        console.log(event.target)
+        console.log(name);
+        switch (name) {
+            case 'Стандарт Бязь':
+                break;
+            case 'Стандарт Гост':
+                break;
+            case 'Delux':
+                break;
+            case 'Премиум':
+                break;
+            default:
+                break;
+        }
+    }
+
     render() {
         const copyProducts = this.state.lists.map(item => {
             console.log(item);
-            return (<Product key={item.id} id={item.id} title={item.title} description={item.body}></Product>)
+            return (<Product key={item.id} id={item.id} title={item.title} description={item.body} image={"https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg"}></Product>)
         })
         return (
             // <div className="container-fluid">
@@ -48,8 +68,15 @@ class ShopPage extends Component {
             // </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-3 px-1 position-fixed" id="sticky-sidebar" style={{borderRight:"6px solid black",height:"100%"}}>
-                        {"djsdjalsdal"}
+                    {/* px-1 */}
+                    <div class="col-3 position-fixed left-slider" id="sticky-sidebar" style={{ padding: "0px" }}>
+                        <ul class="list-group list-group-flush" style={{ width: "100%" }}>
+                            <li class="list-group-item list-group-item-action active" value="Вся продукция" onClick={this.sortProducts.bind(this)}>Вся продукция</li>
+                            <li class="list-group-item list-group-item-action" value="jdsasakl" onClick={this.sortProducts.bind(this)}>Стандарт Бязь</li>
+                            <li class="list-group-item list-group-item-action" style={{ marginRight: "0px" }} onClick={this.sortProducts.bind(this)}>Стандарт Гост</li>
+                            <li class="list-group-item list-group-item-action" onClick={this.sortProducts.bind(this)}>Delux</li>
+                            <li class="list-group-item list-group-item-action" onClick={this.sortProducts.bind(this)}>Премиум</li>
+                        </ul>
                     </div>
                     <div class="col offset-3 grid" id="main">
                         {copyProducts}

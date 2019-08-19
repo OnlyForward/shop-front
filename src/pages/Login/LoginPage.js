@@ -1,9 +1,29 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faUnlockAlt } from '@fortawesome/free-solid-svg-icons'
+import { required, length, email } from '../../utils/validator';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class LoginPage extends Component {
+
+    state = {
+        loginForm: {
+            email: {
+                value: '',
+                valid: false,
+                touched: false,
+                validators: [required, email]
+            },
+            password: {
+                value: '',
+                valid: false,
+                touched: false,
+                validators: [required, length({ min: 5 })]
+            },
+            formIsValid: false
+        }
+    };
+
     constructor(props) {
         super(props);
     }
@@ -14,10 +34,10 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div className="container h-100">
+            <div className="container-fluid" style={{ height: "81vh" }}>
                 <div className="row h-100 justify-content-center align-items-center">
                     <div className="col-12">
-                        <div className="container border rounded p-4" style={{maxWidth:"400px;"}}>
+                        <div className="container border rounded p-4" style={{ maxWidth: "400px;" }}>
                             <form action="login/" method="post">
                                 <h3 className="h3 text-center my-4">Войти</h3>
 
@@ -26,9 +46,8 @@ class LoginPage extends Component {
                                     <div className="input-group my-4">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">
-                                            <FontAwesomeIcon icon={faUserCircle} />
-                                                {/* <i className="fas fa-user-circle"></i> */}
-                                                </span>
+                                                <FontAwesomeIcon icon={faUserCircle} />
+                                            </span>
                                         </div>
                                         <input type="text" name="email" id="" className="form-control" placeholder="логин" />
                                     </div>
@@ -36,9 +55,8 @@ class LoginPage extends Component {
                                     <div className="input-group">
                                         <div class="input-group-prepend">
                                             <span className="input-group-text">
-                                            <FontAwesomeIcon icon={faUnlockAlt} />
-                                                {/* <i class="fas fa-unlock-alt"></i> */}
-                                                </span>
+                                                <FontAwesomeIcon icon={faUnlockAlt} />
+                                            </span>
                                         </div>
                                         <input type="password" name="password" id="" class="form-control" placeholder="пароль" />
                                     </div>

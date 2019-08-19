@@ -1,0 +1,111 @@
+import React, { Component } from 'react';
+
+class Orders extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        console.log("loaded")
+    }
+
+    render() {
+        return (
+            // <h1>Work</h1>
+            <div class="container my-5">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    Продукты
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    {/* <% items.forEach(item=>{ %> */}
+                                    {/* <!-- <a class="list-group-item list-group-item-action"> --> */}
+                                    <li class="list-group-item list-group-item-action">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                {/* <%= item.description %> */}
+                                            </div>
+                                            <div class="col-md-4 mx-righ">
+                                                <img src="<%= item.imageUrl %>" alt="Responsive image" class="img-fluid"
+                                                    style={{maxHeight: "120px"}} />
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="row my-1">
+                                                    <a role="button" class="btn btn-info"
+                                                        href="/admin/create/<%= item._id %>">Обновить</a>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <form action="/admin/delete/" method="post">
+                                                        <input type="hidden" name="productId" value="<%= item._id %>" />
+                                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                                                        <button type="submit" class="btn btn-info">Удалить</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {/* <!-- </a> -->
+                                <% }) %> */}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="accordion2">
+                    <div class="card">
+                        <div class="card-header" id="headingSecond">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSecond"
+                                    aria-expanded="true" aria-controls="collapseSecond">
+                                    Пользователи
+                            </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSecond" class="collapse show" aria-labelledby="headingSecond"
+                            data-parent="#accordion2">
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    {/* <% users.forEach(item=>{ %> */}
+                                    <a class="list-group-item list-group-item-action">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <div class="row">
+                                                    {/* <%= item.name %> */}
+                                                </div>
+                                                <div class="row">
+                                                    {/* <%= item.email %> */}
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="row my-1">
+                                                    <button type="button" class="btn btn-info">Обновить</button>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <button type="button" class="btn btn-info">Удалить</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    {/* <% }) %> */}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default Orders;

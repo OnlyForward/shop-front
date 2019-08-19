@@ -10,4 +10,22 @@ const instanceAxios = axios.create({
     }
 })
 
+
+// var config = {
+//     headers: {'Authorization': "bearer " + token}
+// };
+
+// var bodyParameters = {
+//    key: "value"
+// }
+
+// Axios.post( 
+//   'http://localhost:8000/api/v1/get_token_payloads',
+//   bodyParameters,
+//   config
+// ).then((response) => {
+//   console.log(response)
+// }).catch((error) => {
+//   console.log(error)
+// });
 export default instanceAxios;
