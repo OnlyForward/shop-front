@@ -15,23 +15,19 @@ class UserProfile extends Component {
 
     }
 
-    changeGeneralData() {
-
-    }
-
     render() {
         return (
-            <div class="container-fluid">
-                <div class="row">
-                    {/* px-1 */}
-                    <div class="col-3 position-fixed left-slider" id="sticky-sidebar" style={{ padding: "0px" }}>
-                        <ul class="list-group list-group-flush" style={{ width: "100%" }}>
-                            <NavLink to={`/profile`} class="list-group-item list-group-item-action active" value="Вся продукция" >Общее</NavLink>
-                            <NavLink to={`/profile/orders`} class="list-group-item list-group-item-action" style={{ marginRight: "0px" }} >Заказы</NavLink>
-                            <li class="list-group-item list-group-item-action" >Выход</li>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-3 position-fixed left-slider" id="sticky-sidebar">
+                        <ul className="list-group list-group-flush">
+                            <NavLink exact to={`/profile`} className="list-group-item list-group-item-action" value="Вся продукция" >Общее</NavLink>
+                            {/* style={{ marginRight: "0px" }} */}
+                            <NavLink to={`/profile/orders`} className="list-group-item list-group-item-action" >Заказы</NavLink>
+                            <Link className="list-group-item list-group-item-action" >Выход</Link>
                         </ul>
                     </div>
-                    <div class="col offset-3 grid" id="main">
+                    <div className="col offset-3 grid" id="main">
                         <div className="container">
                             {/* <Route
                                 exact

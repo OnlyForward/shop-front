@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css';
+// import { Navbar } from 'react-bootstrap';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import { Route, Link, NavLink } from 'react-router-dom'
 import ShopPage from '../pages/Products/ShopPage';
 import ProductDescription from './Products/SingleProductDescription/ProductDescription';
 import SignUpPage from '../pages/SignUp/SignUp';
 import LoginPage from '../pages/Login/LoginPage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons'
 import Basket from './Users/Basket/Basket';
 import functIndexPage from '../pages/Index/IndexPage';
 import "../pages/IndexPage.css";
 import Logo from '../images/logo.png'
 import Profile from '../pages/Users/UserProfiles/UserProfile'
-import Footer from '../components/Footer/Footer';
 
 class IndexPage extends Component {
 
@@ -39,10 +40,11 @@ class IndexPage extends Component {
                 <div className="sticky-top" style={{ backgroundColor: "white", boxShadow: "0 2px 8px black" }}>
 
                     <nav className="navbar navbar-expand-lg navbar-ligth">
-                        <Link className="navbar-brand" to="/"><img src={Logo} style={{ height: "4rem" }} /></Link>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" style={{outline:"none"}}>
+                            {/* <span className="navbar-toggler-icon"></span> */}
+                            <FontAwesomeIcon icon={faBars} style={{ color: "blue" }} />
                         </button>
+                        <Link className="navbar-brand" to="/"><img src={Logo} style={{ height: "4rem" }} alt="Logo"/></Link>
 
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -53,11 +55,10 @@ class IndexPage extends Component {
                                     <NavLink className="nav-link" to='/products'>Каталог</NavLink>
                                 </li>
                             </ul>
-                        </div>
-                        <ul class="navbar-nav ml-auto">
-                            <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" list={[1, 2, 3, 4, 5]} aria-label="Search" />
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <ul className="navbar-nav ml-auto">
+                            <form className="form-inline my-2 my-lg-0">
+                                <input className="form-control mr-sm-2" type="search" placeholder="Search" list={[1, 2, 3, 4, 5]} aria-label="Search" />
+                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
                             <NavLink className="btn btn-link" to="/basket"><FontAwesomeIcon icon={faShoppingCart} style={{ color: "blue" }} /></NavLink>
                             <NavLink className="btn btn-link" to="/profile"><FontAwesomeIcon icon={faUserCircle} style={{ color: "blue" }} /></NavLink>
@@ -65,9 +66,11 @@ class IndexPage extends Component {
                             <NavLink to="/login" className="btn btn-outline-primary nav-link">Войти</NavLink>
                             {/* <form action="logout/" method="POST">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
-                <input type="submit" class="btn btn-outline-primary nav-link" value="Выйти"/>
+                <input type="submit" className="btn btn-outline-primary nav-link" value="Выйти"/>
             </form> */}
                         </ul>
+                        </div>
+ 
                     </nav>
                 </div>
                 {/* <div className="container-fluid my"> */}

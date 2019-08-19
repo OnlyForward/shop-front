@@ -40,12 +40,12 @@ class UserInf extends Component {
                     </div>
 
                     <div className="input-group mt-4">
-                        <div class="input-group-prepend">
+                        <div className="input-group-prepend">
                             <span className="input-group-text">
                                 <FontAwesomeIcon icon={faUnlockAlt} />
                             </span>
                         </div>
-                        <input type="password" name="password" id="" class="form-control" placeholder="пароль" />
+                        <input type="password" name="password" id="" className="form-control" placeholder="пароль" />
                     </div>
 
                 </div>

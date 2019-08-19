@@ -1,11 +1,33 @@
+.index-page{
+    font-size: 14pt;
+}
+
+.intro{
+    font-size: 19pt;
+    font-weight: bold;
+}
+
+ul{
+    list-style-type: none;
+}
+
+ul hr{
+    border: 0.1rem solid red;
+    width: 30%;
+}
+
 .col-img {
     height: 25rem;
     width: 40rem;
 }
 
 
-@media (min-width: 768px) {
-
+@media (max-width: 768px) {
+    
+    .col-img {
+        height: 16rem;
+        width: 30rem;
+    }
 }
 
 @media (min-width: 512px){

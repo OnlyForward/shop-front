@@ -2,11 +2,7 @@
   text-align: center;
 }
 
-html{
-  height: 100vh;
-}
-
-body{
+html,body{
   height: 100vh;
 }
 

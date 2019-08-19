@@ -53,32 +53,18 @@ class ShopPage extends Component {
             return (<Product key={item.id} id={item.id} title={item.title} description={item.body} image={"https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg"}></Product>)
         })
         return (
-            // <div className="container-fluid">
-            //     <div className="row">
-            //         <div className="col-2 px-1 bg-dark position-fixed" id="sticky-sidebar">
-            //             <p>
-            //                 {"djaljdlasjl"}
-            //                 </p>
-            //         </div>
-            //         <div className="col grid" id="main">
-
-            //             {copyProducts}
-            //         </div>
-            //     </div>
-            // </div>
-            <div class="container-fluid">
-                <div class="row">
-                    {/* px-1 */}
-                    <div class="col-3 position-fixed left-slider" id="sticky-sidebar" style={{ padding: "0px" }}>
-                        <ul class="list-group list-group-flush" style={{ width: "100%" }}>
-                            <li class="list-group-item list-group-item-action active" value="Вся продукция" onClick={this.sortProducts.bind(this)}>Вся продукция</li>
-                            <li class="list-group-item list-group-item-action" value="jdsasakl" onClick={this.sortProducts.bind(this)}>Стандарт Бязь</li>
-                            <li class="list-group-item list-group-item-action" style={{ marginRight: "0px" }} onClick={this.sortProducts.bind(this)}>Стандарт Гост</li>
-                            <li class="list-group-item list-group-item-action" onClick={this.sortProducts.bind(this)}>Delux</li>
-                            <li class="list-group-item list-group-item-action" onClick={this.sortProducts.bind(this)}>Премиум</li>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-3 position-fixed left-slider" id="sticky-sidebar">
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item list-group-item-action active" value="Вся продукция" onClick={this.sortProducts.bind(this)}>Вся продукция</li>
+                            <li className="list-group-item list-group-item-action" value="jdsasakl" onClick={this.sortProducts.bind(this)}>Стандарт Бязь</li>
+                            <li className="list-group-item list-group-item-action" style={{ marginRight: "0px" }} onClick={this.sortProducts.bind(this)}>Стандарт Гост</li>
+                            <li className="list-group-item list-group-item-action" onClick={this.sortProducts.bind(this)}>Delux</li>
+                            <li className="list-group-item list-group-item-action" onClick={this.sortProducts.bind(this)}>Премиум</li>
                         </ul>
                     </div>
-                    <div class="col offset-3 grid" id="main">
+                    <div className="col offset-3 grid" id="main">
                         {copyProducts}
                     </div>
                 </div>

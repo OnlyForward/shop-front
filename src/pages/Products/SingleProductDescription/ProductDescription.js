@@ -44,7 +44,8 @@ class ProductDescription extends Component {
             <div className="container-fluid mt-4">
                 <div className="row">
                     <div className="col">
-                        <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" style={{ width: "40rem", height: "30rem" }} />
+                        <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" style={{ width: "40rem", height: "30rem" }} alt="Product"/>
+
                     </div>
                     <div className="col d-flex flex-column" style={{ fontSize: "16pt" }}>
                         <div className="raw p-3">

@@ -20,7 +20,7 @@ class Basket extends Component {
                 <li className="list-group-item">
                     <div className="row">
                         <div className="col-md-4 mx-righ">
-                            <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" alt="Responsive image" className="img-fluid"
+                            <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" alt="Product" className="img-fluid"
                                 style={{ maxHeight: "120px" }} />
                         </div>
 
@@ -42,8 +42,8 @@ class Basket extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <div class="row">
-                    <div class="col" id="main">
+                <div className="row">
+                    <div className="col" id="main">
                         <div className="container my-3">
                             <ul className="list-group">
                                 {this.listOfOrders()}
@@ -51,7 +51,7 @@ class Basket extends Component {
                         </div>
                     </div>
                     <div className="offset-3"></div>
-                    <div class="col-3 position-fixed offset-9 right-slider" id="sticky-sidebar" style={{ padding: "0px" }}>
+                    <div className="col-3 position-fixed offset-9 right-slider" id="sticky-sidebar" style={{ padding: "0px" }}>
                         <div className="container my-5">
                             <form action="makeOrder/" method="post">
                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />

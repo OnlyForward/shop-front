@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import IndexPage from './pages/IndexPage';
+import 'jquery/dist/jquery.slim';
 class App extends Component {
 
 

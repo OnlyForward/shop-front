@@ -2,9 +2,9 @@ import React from 'react';
 import './Footer.css';
 
 function Footer(props) {
-    return (<footer class="navbar sticky-bottom navbar-expand-lg navbar-dark mt-3" style={{ fontSize: "14pt", background:"#999999" }}>
-        {/* <div className="raw" style={{width:"100%"}}> */}
-        <div className="col" style={{ display: "inline" }}>
+    // style={{ fontSize: "14pt", background:"#999999" }}
+    return (<footer className="navbar sticky-bottom navbar-expand-lg navbar-dark mt-3">
+        <div className="col">
             <ul className="d-flex align-items-start flex-column" style={{ listStyleType: "none" }}>
                 <li className="mb-3">
                     Тел: +7 9106896538
@@ -14,11 +14,14 @@ function Footer(props) {
                                 </li>
             </ul>
         </div>
-        <div className="col" style={{ display: "inline" }}>
+        {/* style={{ display: "inline" }} */}
+        <div className="col">
             <ul style={{ listStyleType: "none" }}>
                 <li>
-                    <input type="email" className="pb-1 mr-5" placeholder="Email" style={{ backgroundColor: "transparent", border: "none", borderBottom: "0.2rem solid red", outline: "none", color: "black" }} />
-                    <button className="btn check_hover" style={{ borderColor: "white", color: "black", borderWidth: "0.2rem" }}>Подписаться</button>
+                {/* style={{ backgroundColor: "transparent", border: "none", borderBottom: "0.2rem solid red", outline: "none", color: "black" }} */}
+                    <input type="email" className="pb-1 mr-5 mail-footer" placeholder="Email" />
+                    {/* style={{ borderColor: "white", color: "black", borderWidth: "0.2rem" }} */}
+                    <button className="btn check_hover">Подписаться</button>
                 </li>
                 <li className="mt-4">
                     E-mail: isa.org@inbox.ru

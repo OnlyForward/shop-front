@@ -8,12 +8,14 @@
 
 
   .left-slider {
+  padding: 0px;
   height: 100%;
   -webkit-box-shadow: 0 2px 8px black;
           box-shadow: 0 2px 8px black;
 }
 
 .left-slider ul {
+  width: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
