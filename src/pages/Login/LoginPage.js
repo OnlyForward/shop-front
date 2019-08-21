@@ -32,6 +32,10 @@ class LoginPage extends Component {
 
     }
 
+    forgotpassword = () => {
+        console.log('came to forget password');
+    }
+
     render() {
         return (
             <div className="container-fluid" style={{ height: "81vh" }}>
@@ -62,9 +66,11 @@ class LoginPage extends Component {
                                     </div>
 
                                 </div>
+
                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                                 <input type="submit" className="btn btn-info btn-block" value="Войти" />
                             </form>
+                            <button type="button" class="btn btn-link" onClick={this.forgotpassword.bind(this)}>Забыли пароль ?</button>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Orders extends Component {
     constructor(props) {
@@ -9,7 +10,18 @@ class Orders extends Component {
     }
 
     componentDidMount() {
-        console.log("loaded")
+        console.log("loaded");
+        axios.get(this.props.match.url,{
+            params:{
+                userId: localStorage.getItem('userId')
+            }
+        }).then(res=>{
+            console.log(res)
+            // this.setState({orders:res})
+        }).catch(err=>{
+
+        })
+
     }
 
 
@@ -22,7 +34,7 @@ class Orders extends Component {
                     <div className="row">
 
                         <div className="col-4 ">
-                            <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" alt="Responsive image" className="img-fluid"
+                            <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" alt="Responsive" className="img-fluid"
                                 style={{ maxHeight: "120px" }} />
                         </div>
                         <div className="col d-flex align-content-around flex-wrap" >
@@ -51,7 +63,7 @@ class Orders extends Component {
                     <div className="row">
 
                         <div className="col-4 ">
-                            <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" alt="Responsive image" className="img-fluid"
+                            <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" alt="Responsive" className="img-fluid"
                                 style={{ maxHeight: "120px" }} />
                         </div>
                         <div className="col d-flex align-content-around flex-wrap" >

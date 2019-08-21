@@ -3,7 +3,7 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css';
 // import { Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import { Route, Link, NavLink } from 'react-router-dom'
+import { Route, Link, NavLink, Switch } from 'react-router-dom'
 import ShopPage from '../pages/Products/ShopPage';
 import ProductDescription from './Products/SingleProductDescription/ProductDescription';
 import SignUpPage from '../pages/SignUp/SignUp';
@@ -40,11 +40,11 @@ class IndexPage extends Component {
                 <div className="sticky-top" style={{ backgroundColor: "white", boxShadow: "0 2px 8px black" }}>
 
                     <nav className="navbar navbar-expand-lg navbar-ligth">
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" style={{outline:"none"}}>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" style={{ outline: "none" }}>
                             {/* <span className="navbar-toggler-icon"></span> */}
                             <FontAwesomeIcon icon={faBars} style={{ color: "blue" }} />
                         </button>
-                        <Link className="navbar-brand" to="/"><img src={Logo} style={{ height: "4rem" }} alt="Logo"/></Link>
+                        <Link className="navbar-brand" to="/"><img src={Logo} style={{ height: "4rem" }} alt="Logo" /></Link>
 
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -56,33 +56,29 @@ class IndexPage extends Component {
                                 </li>
                             </ul>
                             <ul className="navbar-nav ml-auto">
-                            <form className="form-inline my-2 my-lg-0">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Search" list={[1, 2, 3, 4, 5]} aria-label="Search" />
-                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>
-                            <NavLink className="btn btn-link" to="/basket"><FontAwesomeIcon icon={faShoppingCart} style={{ color: "blue" }} /></NavLink>
-                            <NavLink className="btn btn-link" to="/profile"><FontAwesomeIcon icon={faUserCircle} style={{ color: "blue" }} /></NavLink>
-                            <NavLink to="/signup" className="btn btn-outline-primary nav-link mx-2">Регистрация</NavLink>
-                            <NavLink to="/login" className="btn btn-outline-primary nav-link">Войти</NavLink>
-                            {/* <form action="logout/" method="POST">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>"/>
-                <input type="submit" className="btn btn-outline-primary nav-link" value="Выйти"/>
-            </form> */}
-                        </ul>
+                                <form className="form-inline my-2 my-lg-0">
+                                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                                {this.props.isAuth || <NavLink className="btn btn-link" to="/auth/basket"><FontAwesomeIcon icon={faShoppingCart} style={{ color: "blue" }} /></NavLink>}
+                                {this.props.isAuth || <NavLink className="btn btn-link" to="/profile"><FontAwesomeIcon icon={faUserCircle} style={{ color: "blue" }} /></NavLink>}
+                                {this.props.isAuth || <NavLink to="/auth/signup" className="btn btn-outline-primary nav-link mx-2">Регистрация</NavLink>}
+                                {this.props.isAuth || <NavLink to="/auth/login" className="btn btn-outline-primary nav-link">Войти</NavLink>}
+                                {this.props.isAuth && <button className="btn btn-outline-primary nav-link mx-2" onClick={this.props.logout}>Выйти</button>}
+                            </ul>
                         </div>
- 
+
                     </nav>
                 </div>
-                {/* <div className="container-fluid my"> */}
+                <Switch>
                 <Route path='/' exact component={functIndexPage} />
                 <Route path='/products/:id' exact component={ProductDescription} />
                 <Route path='/products' exact component={ShopPage} />
-                <Route path='/login' exact component={LoginPage} />
-                <Route path='/signup' exact component={SignUpPage} />
-                <Route path='/basket' exact component={Basket} />
+                {this.props.isAuth || <Route path='/auth/login' exact component={LoginPage} />}
+                {this.props.isAuth || <Route path='/auth/signup' exact component={SignUpPage} />}
+                {this.props.isAuth || <Route path='/auth/basket' exact component={Basket} />}
                 {/* <Route path='/profile' exact component={Profile} /> */}
                 <Route
-                    
                     path="/profile"
                     render={({ match: { url } }) => (
                         <>
@@ -92,6 +88,8 @@ class IndexPage extends Component {
                     )}
                 />
 
+                <Route render ={ ()=><h1>Eror</h1>} />
+                </Switch>
 
                 {/* <button onClick={this.takeOne.bind(this, 1)}></button> */}
                 {/* </div> */}

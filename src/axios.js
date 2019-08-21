@@ -6,11 +6,11 @@ const instanceAxios = axios.create({
     headers: {
         'Content-Typy':'application/json',
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods":"PUT, POST, DELETE"
+        "Access-Control-Allow-Methods":"PUT, POST, DELETE, GET"
     }
 })
-
-
+//axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+//delete axios.defaults.headers.common["Authorization"];
 // var config = {
 //     headers: {'Authorization': "bearer " + token}
 // };
