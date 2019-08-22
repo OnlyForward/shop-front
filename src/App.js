@@ -6,7 +6,6 @@ import 'jquery/dist/jquery.slim';
 import axios from './axios';
 class App extends Component {
 
-
   state = {
     showBackdrop: false,
     isAuth: false,
@@ -19,6 +18,12 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
     const expiryDate = localStorage.getItem('expiryDate');
+    const cleanBacket = localStorage.getItem('cleanBucket');
+    if(cleanBacket){
+      let remainingMillisecondsBucket =
+      new Date(cleanBacket).getTime() - new Date().getTime();
+      this.cleanBacket(remainingMillisecondsBucket);
+    }
     if (!token || !expiryDate) {
       return;
     }
@@ -31,6 +36,19 @@ class App extends Component {
       new Date(expiryDate).getTime() - new Date().getTime();
     this.setState({ isAuth: true, token: token, userId: userId });
     this.setAutoLogout(remainingMilliseconds);
+
+    // const remainingMilliseconds = 60 * 60 * 1000;
+    // const expiryDateBacket = new Date(
+    //   new Date().getTime() + remainingMilliseconds
+    // );
+    // localStorage.setItem('cleanBucket', expiryDateBacket.toISOString());
+    // this.cleanBacket(remainingMilliseconds);
+  }
+
+  cleanBacket = milliseconds => {
+    setTimeout(() => {
+      localStorage.removeItem("backet");
+    }, milliseconds)
   }
 
   logoutHandler = () => {
@@ -133,7 +151,7 @@ class App extends Component {
   signupHandler = (event, authData) => {
     event.preventDefault();
     this.setState({ authLoading: true });
-    axios.put('http://localhost:8080/auth/signup',JSON.stringify({
+    axios.put('http://localhost:8080/auth/signup', JSON.stringify({
       email: authData.signupForm.email.value,
       password: authData.signupForm.password.value,
       name: authData.signupForm.name.value
@@ -149,19 +167,19 @@ class App extends Component {
       }
       return res.json();
     })
-    .then(resData => {
-      console.log(resData);
-      this.setState({ isAuth: false, authLoading: false });
-      this.props.history.replace('/');
-    })
-    .catch(err => {
-      console.log(err);
-      this.setState({
-        isAuth: false,
-        authLoading: false,
-        error: err
+      .then(resData => {
+        console.log(resData);
+        this.setState({ isAuth: false, authLoading: false });
+        this.props.history.replace('/');
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({
+          isAuth: false,
+          authLoading: false,
+          error: err
+        });
       });
-    });
     // fetch('http://localhost:8080/auth/signup', {
     //   method: 'PUT',
     //   headers: {

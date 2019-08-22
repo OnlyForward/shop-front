@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faUserCircle, faUnlockAlt } from '@fortawesome/free-solid-svg-icons'
 import { required, length, email } from '../../utils/validator';
 import '../SignUp/SignUp.css';
+import Loader from '../../components/Loader/Loader'
 import axios from 'axios';
 class SignUpPage extends Component {
 

@@ -36,6 +36,38 @@ class ProductDescription extends Component {
             this.setState({ count: this.state.count - 1, totalPrice: this.state.totalPrice - this.state.price });
         }
     }
+    //save or not for non auth user ?
+
+    addToBacket = () => {
+        // localStorage.removeItem("backet")
+        console.log('we made order');
+        let backet = localStorage.getItem("backet");
+        if (!backet) {
+            backet = [];
+            backet.push({
+                id: this.props.match.params.id,
+                count: 1
+            });
+        } else {
+            backet = JSON.parse(backet);
+            let index = backet.findIndex((element) => element.id == this.props.match.params.id);
+            console.log(index);
+            if (index > -1) {
+                backet[index].count += 1;
+            } else {
+                backet.push({
+                    id: this.props.match.params.id,
+                    count: 1
+                });
+            }
+        }
+        localStorage.setItem("backet", JSON.stringify(backet));
+        // axios.post(this.props.match.url,{
+        //     userId: 
+        // })
+        let f = localStorage.getItem("backet");
+        console.log(f);
+    }
 
     render() {
         let copyData = {};
@@ -44,7 +76,7 @@ class ProductDescription extends Component {
             <div className="container-fluid mt-4">
                 <div className="row">
                     <div className="col">
-                        <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" style={{ width: "40rem", height: "30rem" }} alt="Product"/>
+                        <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" style={{ width: "40rem", height: "30rem" }} alt="Product" />
 
                     </div>
                     <div className="col d-flex flex-column" style={{ fontSize: "16pt" }}>
@@ -68,7 +100,7 @@ class ProductDescription extends Component {
                         </button>
                         </div>
                         <div className="raw mt-auto">
-                            <button className="btn btn-outline-success p-2" style={{ borderRadius: "2rem", width: "30%" }}>В корзину</button>
+                            <button className="btn btn-outline-success p-2" style={{ borderRadius: "2rem", width: "30%" }} onClick={this.addToBacket.bind(this)}>В корзину</button>
                         </div>
                     </div>
                 </div>

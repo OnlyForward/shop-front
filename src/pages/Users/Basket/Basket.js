@@ -95,9 +95,7 @@ class Basket extends Component {
     }
 
     removeProduct = () =>{
-        if(this.state.elements){
-            
-        }
+        
     }
 
     listOfOrders() {
@@ -163,6 +161,10 @@ class Basket extends Component {
                         </div>
                     </div>
                 </div>
+
+                <ul>
+                    
+                    </ul>
                 {/* 
 
                 <div className="container mt-5">

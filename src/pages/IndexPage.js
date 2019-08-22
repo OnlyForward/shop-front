@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css';
 // import { Navbar } from 'react-bootstrap';
@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import { Route, Link, NavLink, Switch } from 'react-router-dom'
 import ShopPage from '../pages/Products/ShopPage';
 import ProductDescription from './Products/SingleProductDescription/ProductDescription';
-import SignUpPage from '../pages/SignUp/SignUp';
+// import SignUpPage from '../pages/SignUp/SignUp';
 import LoginPage from '../pages/Login/LoginPage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons'
@@ -14,7 +14,9 @@ import Basket from './Users/Basket/Basket';
 import functIndexPage from '../pages/Index/IndexPage';
 import "../pages/IndexPage.css";
 import Logo from '../images/logo.png'
+import Loader from '../components/Loader/Loader'
 import Profile from '../pages/Users/UserProfiles/UserProfile'
+import LazyLoad from '../hoc/asyncComponent';
 
 class IndexPage extends Component {
 
@@ -26,6 +28,8 @@ class IndexPage extends Component {
         super(props);
     }
 
+    AsyncRegister = LazyLoad(()=>import('../pages/SignUp/SignUp'))
+    AsyncRegister1 = React.lazy(()=>import('../pages/SignUp/SignUp'));
     takeOne(id) {
         axios.get().then(response => {
             console.log(response);
@@ -75,7 +79,10 @@ class IndexPage extends Component {
                 <Route path='/products/:id' exact component={ProductDescription} />
                 <Route path='/products' exact component={ShopPage} />
                 {this.props.isAuth || <Route path='/auth/login' exact component={LoginPage} />}
-                {this.props.isAuth || <Route path='/auth/signup' exact component={SignUpPage} />}
+                <Suspense fallback={Loader}>
+
+                {this.props.isAuth || <Route path='/auth/signup' exact component={this.AsyncRegister1} />}
+                </Suspense>
                 {this.props.isAuth || <Route path='/auth/basket' exact component={Basket} />}
                 {/* <Route path='/profile' exact component={Profile} /> */}
                 <Route
