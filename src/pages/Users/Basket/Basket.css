@@ -3,4 +3,17 @@
     -webkit-box-shadow: 0 2px 8px black;
             box-shadow: 0 2px 8px black;
   }
+
+
+  @media (max-width: 380px) {
+    
+    .right-slider {
+      display: none;
+    }
+  
+    .img-fluid{
+        display: none;
+    }
+
+  }
   

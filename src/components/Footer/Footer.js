@@ -5,7 +5,7 @@ function Footer(props) {
     // style={{ fontSize: "14pt", background:"#999999" }}
     return (<footer className="navbar sticky-bottom navbar-expand-lg navbar-dark mt-3">
         <div className="col">
-            <ul className="d-flex align-items-start flex-column" style={{ listStyleType: "none" }}>
+            <ul className="d-flex align-items-start flex-column mx-auto" style={{ listStyleType: "none"}}>
                 <li className="mb-3">
                     Тел: +7 9106896538
                                 </li>
@@ -15,7 +15,7 @@ function Footer(props) {
             </ul>
         </div>
         {/* style={{ display: "inline" }} */}
-        <div className="col">
+        <div className="col mx-auto">
             <ul style={{ listStyleType: "none" }}>
                 <li>
                 {/* style={{ backgroundColor: "transparent", border: "none", borderBottom: "0.2rem solid red", outline: "none", color: "black" }} */}

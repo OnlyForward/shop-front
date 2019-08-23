@@ -1,16 +1,11 @@
-import React, { Component, Suspense } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faUserCircle, faUnlockAlt } from '@fortawesome/free-solid-svg-icons'
 import { required, length, email } from '../../utils/validator';
 import '../SignUp/SignUp.css';
-import Loader from '../../components/Loader/Loader'
 import axios from 'axios';
-class SignUpPage extends Component {
 
-  constructor(props) {
-    super(props);
-  }
+class SignUpPage extends Component {
 
   state = {
     signupForm: {
@@ -84,7 +79,6 @@ class SignUpPage extends Component {
 
 
   onChangeDataForm = e => {
-    let name = e.target.name;
     console.log(`e.target.name ${e.target.name}`)
     this.setState({
       signupForm: {
@@ -111,7 +105,6 @@ class SignUpPage extends Component {
                     <div className="input-group-prepend">
                       <span className="input-group-text">
                         <FontAwesomeIcon icon={faPaperPlane} />
-                        {/* <i className="fas fa-paper-plane"></i> */}
                       </span>
                     </div>
                     <input type="email" name="email" id="mail" className="form-control" placeholder="почта" onChange={this.onChangeDataForm.bind(this)} />
@@ -121,7 +114,6 @@ class SignUpPage extends Component {
                     <div className="input-group-prepend">
                       <span className="input-group-text">
                         <FontAwesomeIcon icon={faUserCircle} />
-                        {/* <i className="fas fa-user-circle"></i> */}
                       </span>
                     </div>
                     <input type="text" name="login" id="" className="form-control" placeholder="логин" onChange={this.onChangeDataForm.bind(this)} />
@@ -131,7 +123,6 @@ class SignUpPage extends Component {
                     <div className="input-group-prepend">
                       <span className="input-group-text">
                         <FontAwesomeIcon icon={faUnlockAlt} />
-                        {/* <i className="fas fa-unlock-alt"></i> */}
                       </span>
                     </div>
                     <input type="password" name="password1" id="" className="form-control" placeholder="пароль" onChange={this.onChangeDataForm.bind(this)} />
@@ -141,7 +132,6 @@ class SignUpPage extends Component {
                     <div className="input-group-prepend">
                       <span className="input-group-text">
                         <FontAwesomeIcon icon={faUnlockAlt} />
-                        {/* <i className="fas fa-unlock-alt"></i> */}
                       </span>
                     </div>
                     <input type="password" name="password2" id="" className="form-control" placeholder="Повторный пароль" onChange={this.onChangeDataForm.bind(this)} />

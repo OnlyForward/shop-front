@@ -10,17 +10,17 @@ class Orders extends Component {
     }
 
     componentDidMount() {
-        console.log("loaded");
-        axios.get(this.props.match.url,{
-            params:{
-                userId: localStorage.getItem('userId')
-            }
-        }).then(res=>{
-            console.log(res)
-            // this.setState({orders:res})
-        }).catch(err=>{
+        // console.log("loaded");
+        // axios.get(this.props.match.url,{
+        //     params:{
+        //         userId: localStorage.getItem('userId')
+        //     }
+        // }).then(res=>{
+        //     console.log(res)
+        //     // this.setState({orders:res})
+        // }).catch(err=>{
 
-        })
+        // })
 
     }
 
@@ -58,6 +58,7 @@ class Orders extends Component {
 
         let mas = new Array(12);
         for (let i = 0; i < 12; i++) {
+            console.log('came')
             mas.push((
                 <li className="list-group-item list-group-item-action">
                     <div className="row">
@@ -100,7 +101,6 @@ class Orders extends Component {
                             <div className="card-body">
                                 <ul className="list-group">
                                     {this.state.orders.firstOrder}
-                                    
                                 </ul>
                             </div>
                         </div>

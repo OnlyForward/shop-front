@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Products/ShopPage.css';
 import axios from '../../axios';
-import { NavLink } from 'react-router-dom';
 import Product from '../../components/Product/Product';
 import Loader from '../../components/Loader/Loader';
 

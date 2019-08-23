@@ -22,18 +22,18 @@ ul hr{
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 380px) {
     
     .col-img {
         height: 16rem;
-        width: 30rem;
+        width: 20rem;
     }
-}
+    .index-page{
+        font-size: 12pt;
+    }
 
-@media (min-width: 512px){
-
-}
-
-@media (min-width: 256px){
-    
+    .intro{
+        font-size: 14pt;
+        font-weight: bold;
+    }
 }

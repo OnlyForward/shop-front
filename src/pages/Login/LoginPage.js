@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faUnlockAlt } from '@fortawesome/free-solid-svg-icons'
 import { required, length, email } from '../../utils/validator';
-import 'bootstrap/dist/css/bootstrap.css';
 
 class LoginPage extends Component {
 
@@ -23,10 +22,6 @@ class LoginPage extends Component {
             formIsValid: false
         }
     };
-
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
 

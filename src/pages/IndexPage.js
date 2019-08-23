@@ -1,7 +1,6 @@
 import React, { Component, Suspense } from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css';
-// import { Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { Route, Link, NavLink, Switch } from 'react-router-dom'
 import ShopPage from '../pages/Products/ShopPage';
@@ -24,12 +23,8 @@ class IndexPage extends Component {
 
     }
 
-    constructor(props) {
-        super(props);
-    }
-
-    AsyncRegister = LazyLoad(()=>import('../pages/SignUp/SignUp'))
-    AsyncRegister1 = React.lazy(()=>import('../pages/SignUp/SignUp'));
+    AsyncRegister = LazyLoad(() => import('../pages/SignUp/SignUp'))
+    AsyncRegister1 = React.lazy(() => import('../pages/SignUp/SignUp'));
     takeOne(id) {
         axios.get().then(response => {
             console.log(response);
@@ -41,11 +36,10 @@ class IndexPage extends Component {
     render() {
         return (
             <div>
-                <div className="sticky-top" style={{ backgroundColor: "white", boxShadow: "0 2px 8px black" }}>
+                <div className="sticky-top" style={{ backgroundColor: "white", boxShadow: "0 2px 8px black", width:"100%" }}>
 
                     <nav className="navbar navbar-expand-lg navbar-ligth">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" style={{ outline: "none" }}>
-                            {/* <span className="navbar-toggler-icon"></span> */}
                             <FontAwesomeIcon icon={faBars} style={{ color: "blue" }} />
                         </button>
                         <Link className="navbar-brand" to="/"><img src={Logo} style={{ height: "4rem" }} alt="Logo" /></Link>
@@ -64,43 +58,41 @@ class IndexPage extends Component {
                                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                                 </form>
-                                {this.props.isAuth || <NavLink className="btn btn-link" to="/auth/basket"><FontAwesomeIcon icon={faShoppingCart} style={{ color: "blue" }} /></NavLink>}
+                                {this.props.isAuth || <NavLink className="btn btn-link" to="/basket"><FontAwesomeIcon icon={faShoppingCart} style={{ color: "blue" }} /></NavLink>}
                                 {this.props.isAuth || <NavLink className="btn btn-link" to="/profile"><FontAwesomeIcon icon={faUserCircle} style={{ color: "blue" }} /></NavLink>}
                                 {this.props.isAuth || <NavLink to="/auth/signup" className="btn btn-outline-primary nav-link mx-2">Регистрация</NavLink>}
                                 {this.props.isAuth || <NavLink to="/auth/login" className="btn btn-outline-primary nav-link">Войти</NavLink>}
-                                {this.props.isAuth && <button className="btn btn-outline-primary nav-link mx-2" onClick={this.props.logout}>Выйти</button>}
+                                {this.props.isAuth && <NavLink className="btn btn-outline-primary nav-link mx-2" onClick={this.props.logout}>Выйти</NavLink>}
                             </ul>
                         </div>
 
                     </nav>
                 </div>
                 <Switch>
-                <Route path='/' exact component={functIndexPage} />
-                <Route path='/products/:id' exact component={ProductDescription} />
-                <Route path='/products' exact component={ShopPage} />
-                {this.props.isAuth || <Route path='/auth/login' exact component={LoginPage} />}
-                <Suspense fallback={Loader}>
+                    <Route path='/' exact component={functIndexPage} />
+                    {this.props.isAuth || <Route path='/basket' exact component={Basket} />}
 
-                {this.props.isAuth || <Route path='/auth/signup' exact component={this.AsyncRegister1} />}
-                </Suspense>
-                {this.props.isAuth || <Route path='/auth/basket' exact component={Basket} />}
-                {/* <Route path='/profile' exact component={Profile} /> */}
-                <Route
-                    path="/profile"
-                    render={({ match: { url } }) => (
-                        <>
-                            <Route path={`${url}/`} component={Profile} exact />
-                            <Route path={`${url}/orders`} component={Profile} exact />
-                        </>
-                    )}
-                />
+                    <Route path='/products/:id' exact component={ProductDescription} />
+                    <Route path='/products' exact component={ShopPage} />
+                    {/* LazyLoad(()=>import('../pages/Login/LoginPage')) */}
+                    {this.props.isAuth || <Route path='/auth/login' exact component={LoginPage} />}
+                    <Suspense fallback={Loader}>
+                        {this.props.isAuth || <Route path='/auth/signup' exact component={this.AsyncRegister1} />}
+                    </Suspense>
 
-                <Route render ={ ()=><h1>Eror</h1>} />
-                </Switch>
-
-                {/* <button onClick={this.takeOne.bind(this, 1)}></button> */}
-                {/* </div> */}
-                {/* sticky */}
+                    </Switch>
+                    <Route
+                        path="/profile"
+                        render={({ match: { url } }) => (
+                            <>
+                                <Route path={`${url}/`} component={Profile} exact />
+                                <Route path={`${url}/orders`} component={Profile} exact />
+                            </>
+                        )}
+                    />
+                    
+                    {/* <Route render={() => <h1>Eror</h1>} /> */}
+                {/* </Switch> */}
             </div>
         );
     }

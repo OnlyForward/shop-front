@@ -5,7 +5,6 @@ import Solutions from '../../images/solutions.jpg';
 import Sertificates from '../../images/sertificates.jpg'
 import Contacts from '../../images/contacts.jpg'
 import Footer from '../../components/Footer/Footer';
-
 import '../Index/IndexPage.css'
 
 function IndexPage() {
@@ -22,7 +21,7 @@ function IndexPage() {
                         <img src={About} className="col-img" alt="About company" />
                     </div>
                     <div className="col my-auto">
-                    {/* style={{ listStyleType: "none" }} */}
+                        {/* style={{ listStyleType: "none" }} */}
                         <ul className="mx-3">
                             <li> О нас </li>
                             <li> Чем мы занимаемся</li>
@@ -47,13 +46,14 @@ function IndexPage() {
                 </div>
                 <div className="row p-3" style={{ backgroundColor: "LightGray" }}>
                     <div className="col my-auto" >
-                        <img src={Solutions} className="col-img" style={{ height: "22rem" }} alt="About our Solutions" />
+                    {/* style={{ height: "22rem" }} */}
+                        <img src={Solutions} className="col-img"  alt="About our Solutions" />
                     </div>
                     <div className="col my-auto">
                         <ul className="mx-3">
                             <li>О нас</li>
                             <li>Технические решения для вашего производства</li>
-                            <hr/>
+                            <hr />
                             <li>- Оценка эффективности работы основного оборудования</li>
                             <li>- Модернизация существующего оборудования для повышения эффективности работы</li>
                             <li>- Анализ рынка и подбор нового оборудования и тех. оснастки</li>
@@ -65,7 +65,7 @@ function IndexPage() {
                         <ul className="mx-3">
                             <li>О нас</li>
                             <li>Стандартизация и сертификация</li>
-                            <hr/>
+                            <hr />
                             <li>
                                 Стандартизация процессов и продуктов: написание технологического регламента в соответствии с требованиями ГОСТ, разработка и написание ТУ, СТО, должностных, технологических инструкций, инструкция по охране труда
                             </li>
@@ -75,7 +75,8 @@ function IndexPage() {
                         </ul>
                     </div>
                     <div className="col my-auto" >
-                        <img src={Sertificates} className="col-img" style={{ height: "30rem" }} alt="About our Sertifications" />
+                    {/* style={{ height: "30rem" }} */}
+                        <img src={Sertificates} className="col-img"  alt="About our Sertifications" />
                     </div>
                 </div>
                 <div className="row p-3">
@@ -83,7 +84,7 @@ function IndexPage() {
                         <img src={Contacts} className="col-img" alt="Our Contacts" />
                     </div>
                     <div className="col my-auto" style={{ height: "100%" }}>
-                        <ul className="mx-3" style={{fontWeight: "bold" }}>
+                        <ul className="mx-3" style={{ fontWeight: "bold" }}>
                             <li>Свяжитесь с нами</li>
 
                             <li className="my-2">Отдел продаж - 89203573793</li>

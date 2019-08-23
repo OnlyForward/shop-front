@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from '../../../axios';
 import { withRouter } from 'react-router-dom';
+import '../SingleProductDescription/ProductDescription.css';
 
 class ProductDescription extends Component {
 
@@ -36,11 +37,9 @@ class ProductDescription extends Component {
             this.setState({ count: this.state.count - 1, totalPrice: this.state.totalPrice - this.state.price });
         }
     }
-    //save or not for non auth user ?
 
     addToBacket = () => {
         // localStorage.removeItem("backet")
-        console.log('we made order');
         let backet = localStorage.getItem("backet");
         if (!backet) {
             backet = [];
@@ -60,11 +59,19 @@ class ProductDescription extends Component {
                     count: 1
                 });
             }
+
+            this.props.expireDate();
         }
-        localStorage.setItem("backet", JSON.stringify(backet));
+        
+
+
+        if(this.props.isAuth){
         // axios.post(this.props.match.url,{
         //     userId: 
         // })
+        }
+
+        localStorage.setItem("backet", JSON.stringify(backet));
         let f = localStorage.getItem("backet");
         console.log(f);
     }
@@ -75,8 +82,8 @@ class ProductDescription extends Component {
         return (
             <div className="container-fluid mt-4">
                 <div className="row">
-                    <div className="col">
-                        <img src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" style={{ width: "40rem", height: "30rem" }} alt="Product" />
+                    <div className="col ">
+                        <img className="product-image-desc" src="https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg" alt="Product" />
 
                     </div>
                     <div className="col d-flex flex-column" style={{ fontSize: "16pt" }}>
@@ -89,9 +96,10 @@ class ProductDescription extends Component {
                         <div className="raw p-3">
                             Общая сумма: {this.state.totalPrice}
                         </div>
-                        <div className="raw p-3">
-                            Количество {this.state.count}
-                            <button className="btn btn-outline-primary" onClick={this.IncrementItem}>
+                        <div className="raw p-3 mt-2">
+                            Количество <input type="text" name="quant[1]" class="form-control" onChange={{}} value={this.state.count} style={{display:"inline", width:"30%"}}/>
+
+                            <button className="btn btn-outline-primary mx-2" onClick={this.IncrementItem} >
                                 +
                         </button>
 

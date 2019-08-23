@@ -84,6 +84,8 @@ class Basket extends Component {
             }
             return res;
         }).then(res => {
+            localStorage.removeItem('backet');
+            localStorage.removeItem('cleanBacket');
             this.props.history.redirect('/profile/orders');
         }).catch(err => {
 

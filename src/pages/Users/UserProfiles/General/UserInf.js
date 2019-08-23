@@ -33,7 +33,6 @@ class UserInf extends Component {
                         <div className="input-group-prepend">
                             <span className="input-group-text">
                                 <FontAwesomeIcon icon={faPaperPlane} />
-                                {/* <i className="fas fa-paper-plane"></i> */}
                             </span>
                         </div>
                         <input type="email" name="email" id="mail" className="form-control" placeholder="почта" />

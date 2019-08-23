@@ -1,0 +1,12 @@
+.product-image-desc{
+    width: 40rem;
+    height: 30rem;
+}
+
+@media (max-width: 380px) {
+    
+    .product-image-desc{
+        width: 20rem;
+        height: 15rem;
+    }
+}

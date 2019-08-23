@@ -3,7 +3,9 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import IndexPage from './pages/IndexPage';
 import 'jquery/dist/jquery.slim';
+import 'bootstrap/dist/css/bootstrap.css';
 import axios from './axios';
+
 class App extends Component {
 
   state = {
