@@ -23,8 +23,12 @@ class LoginPage extends Component {
         }
     };
 
-    componentDidMount() {
+    constructor(props){
+        super(props)
+    }
 
+    componentDidMount() {
+        console.log(this.props);
     }
 
     forgotpassword = () => {
@@ -62,8 +66,7 @@ class LoginPage extends Component {
 
                                 </div>
 
-                                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-                                <input type="submit" className="btn btn-info btn-block" value="Войти" />
+                                <input type="submit" className="btn btn-info btn-block" value="Войти" onClick={this.props.login}/>
                             </form>
                             <button type="button" class="btn btn-link" onClick={this.forgotpassword.bind(this)}>Забыли пароль ?</button>
                         </div>

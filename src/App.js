@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, withRouter } from 'react-router-dom';
 import IndexPage from './pages/IndexPage';
 import 'jquery/dist/jquery.slim';
 import 'bootstrap/dist/css/bootstrap.css';
-import axios from './axios';
+// import axios from './axios';
+import axios from 'axios';
+
 
 class App extends Component {
 
@@ -21,9 +23,9 @@ class App extends Component {
     const token = localStorage.getItem('token');
     const expiryDate = localStorage.getItem('expiryDate');
     const cleanBacket = localStorage.getItem('cleanBucket');
-    if(cleanBacket){
+    if (cleanBacket) {
       let remainingMillisecondsBucket =
-      new Date(cleanBacket).getTime() - new Date().getTime();
+        new Date(cleanBacket).getTime() - new Date().getTime();
       this.cleanBacket(remainingMillisecondsBucket);
     }
     if (!token || !expiryDate) {
@@ -36,6 +38,8 @@ class App extends Component {
     const userId = localStorage.getItem('userId');
     const remainingMilliseconds =
       new Date(expiryDate).getTime() - new Date().getTime();
+    console.log(localStorage.getItem('token'));
+    console.log('djsakjdal')
     this.setState({ isAuth: true, token: token, userId: userId });
     this.setAutoLogout(remainingMilliseconds);
 
@@ -63,11 +67,12 @@ class App extends Component {
   loginHandler = (event, authData) => {
     event.preventDefault();
     this.setState({ authLoading: true });
-
-    axios.post('http://localhost:8080/auth/login', JSON.stringify({
-      email: authData.email,
-      password: authData.password
-    })).then(response => {
+    // email: authData.email,
+    // password: authData.password
+    axios.post('http://localhost:8080/auth/login', {
+      email: 'any@mail.ru',
+      password: '12345'
+    }).then(response => {
       console.log(response);
       if (response.status === 422) {
         throw new Error('Validation failed.');
@@ -76,7 +81,7 @@ class App extends Component {
         console.log('Error!');
         throw new Error('Could not authenticate you!');
       }
-      return response.json();
+      return response.data;
     }).then(resData => {
       console.log(resData);
       this.setState({
@@ -93,6 +98,7 @@ class App extends Component {
       );
       localStorage.setItem('expiryDate', expiryDate.toISOString());
       this.setAutoLogout(remainingMilliseconds);
+      this.props.history.replace('/');
     })
       .catch(err => {
         console.log(err);
@@ -234,12 +240,13 @@ class App extends Component {
   render() {
     return (
       <div className="App" style={{ height: "100vh" }}>
-        <BrowserRouter>
-          <IndexPage auth={this.state.isAuth} userId={this.state.userId} logout={this.logoutHandler.bind(this)}></IndexPage>
-        </BrowserRouter>
+        {/* <BrowserRouter> */}
+        {/* auth={this.state.isAuth} userId={this.state.userId} */}
+        <IndexPage {...this.state} logout={this.logoutHandler.bind(this)} login={this.loginHandler.bind(this)}></IndexPage>
+        {/* </BrowserRouter> */}
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

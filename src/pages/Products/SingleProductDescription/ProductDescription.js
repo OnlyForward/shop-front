@@ -29,12 +29,12 @@ class ProductDescription extends Component {
     }
 
     IncrementItem = () => {
-        this.setState({ count: this.state.count + 1, totalPrice: this.state.totalPrice + this.state.price });
+        this.setState({ count: +this.state.count + 1, totalPrice: this.state.totalPrice + this.state.price });
     }
 
     DecreaseItem = () => {
         if (this.state.count > 1) {
-            this.setState({ count: this.state.count - 1, totalPrice: this.state.totalPrice - this.state.price });
+            this.setState({ count: +this.state.count - 1, totalPrice: this.state.totalPrice - this.state.price });
         }
     }
 
@@ -62,18 +62,27 @@ class ProductDescription extends Component {
 
             this.props.expireDate();
         }
-        
 
 
-        if(this.props.isAuth){
-        // axios.post(this.props.match.url,{
-        //     userId: 
-        // })
+
+        if (this.props.isAuth) {
+            // axios.post(this.props.match.url,{
+            //     userId: 
+            // })
         }
 
         localStorage.setItem("backet", JSON.stringify(backet));
         let f = localStorage.getItem("backet");
         console.log(f);
+    }
+
+    onChange(event) {
+        if (event.target.value > 0) {
+            this.setState({
+                count: event.target.value,
+                totalPrice: this.state.price * event.target.value
+            });
+        }
     }
 
     render() {
@@ -97,7 +106,7 @@ class ProductDescription extends Component {
                             Общая сумма: {this.state.totalPrice}
                         </div>
                         <div className="raw p-3 mt-2">
-                            Количество <input type="text" name="quant[1]" class="form-control" onChange={{}} value={this.state.count} style={{display:"inline", width:"30%"}}/>
+                            Количество <input type="number" name="quant[1]" class="form-control" onChange={this.onChange.bind(this)} value={this.state.count} style={{ display: "inline", width: "30%" }} />
 
                             <button className="btn btn-outline-primary mx-2" onClick={this.IncrementItem} >
                                 +

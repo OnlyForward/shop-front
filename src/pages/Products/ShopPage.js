@@ -22,7 +22,14 @@ class ShopPage extends Component {
 
 
     componentDidMount() {
-        axios.get('/posts').then(response => {
+        let params = {}
+        if (this.props.history.location.search !== "") {
+            let searchQuery = this.props.history.location.search;
+            let searchItems = searchQuery.split('=');
+            let search = searchItems[0].substring(1, searchItems[0].length - 1)
+            params[search] = searchItems[1]
+        }
+        axios.get('/posts', params).then(response => {
             console.log(response);
             // this.copyProducts = response.data.slice(0, 15).map(item => {
             //     console.log(item);
@@ -43,6 +50,7 @@ class ShopPage extends Component {
     }
 
     componentDidUpdate() {
+        console.log(this.props.history);
         if (this.state.productsLoading) {
             console.log('came to update')
             this.copyProducts = this.state.lists.map((item, index) => {
@@ -55,7 +63,7 @@ class ShopPage extends Component {
         }
     }
 
-    prepapareProducts = ()=>{
+    prepapareProducts = () => {
         this.copyProducts = this.state.lists.map((item, index) => {
             console.log(item);
             return (<Product key={item.id} id={item.id} title={item.title} description={item.body} image={"https://cdn.pixabay.com/photo/2019/07/28/18/43/mountains-4369251_960_720.jpg"}></Product>)
